@@ -15,7 +15,7 @@
 
 ![Vercel](https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white)
 
-🖇️ [링크](https://devtube-two.vercel.app/)
+🖇️ [링크](week-9-type-script-project.vercel.app)
 
 ## Built With
 
