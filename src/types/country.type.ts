@@ -1,40 +1,82 @@
-export type Country = {
-  altSpelling: [];
-  area: number;
-  capital: string[] | undefined;
-  capitalInfo: {};
-  car: {};
-  cca2: string;
-  cca3: string;
-  ccn3: number;
-  coatOfArms: {};
-  continents: [];
-  currencies: {};
-  demonyms: {};
-  flag: string;
-  flags: {
-    png: string;
-  };
-  idd: {};
-  independent: boolean;
-  landlocked: boolean;
-  language: {};
-  latlng: [];
-  maps: {};
+export interface Country {
   name: {
     common: string;
+    official: string;
+    nativeName: {
+      [key: string]: {
+        official: string;
+        common: string;
+      };
+    };
+  };
+  tld: string[];
+  cca2: string;
+  ccn3: string;
+  cca3: string;
+  independent: boolean;
+  status: string;
+  unMember: false;
+  currencies: {
+    [key: string]: {
+      name: string;
+      symbol: string;
+    };
+  };
+  idd: {
+    root: string;
+    suffixes: string[];
+  };
+  capital: string[];
+  altSpellings: string[];
+  region: string;
+  subregion: string;
+  languages: {
+    [key: string]: string;
+  };
+  translations: {
+    [key: string]: {
+      official: string;
+      common: string;
+    };
+  };
+  latlng: number[];
+  landlocked: boolean;
+  area: number;
+  demonyms: {
+    [key: string]: {
+      f: string;
+      m: string;
+    };
+  };
+  flag: string;
+  maps: {
+    googleMaps: string;
+    openStreetMaps: string;
   };
   population: number;
-  postalCode: {};
-  region: string;
+  car: {
+    signs: string[];
+    side: string;
+  };
+  timezones: string[];
+  continents: string[];
+  flags: {
+    png: string;
+    svg: string;
+  };
+  coatOfArms: {
+    png?: string;
+    svg?: string;
+  };
   startOfWeek: string;
-  status: string;
-  subregion: string;
-  timezones: [];
-  tld: [];
-  translation: {};
-  unMember: boolean;
-};
+  capitalInfo: {
+    latlng: number[];
+  };
+  postalCode: {
+    format: string;
+    regex: string;
+  };
+}
 
 export type PrintedCountry = {
   id: string;
