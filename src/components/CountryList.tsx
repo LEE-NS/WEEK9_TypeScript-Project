@@ -8,7 +8,7 @@ interface CountryListProps {
   setCountries: React.Dispatch<React.SetStateAction<PrintedCountry[]>>;
 }
 
-const CountryList = ({
+const CountryList: React.FC<CountryListProps> = ({
   listName,
   list,
   countries,
@@ -19,7 +19,7 @@ const CountryList = ({
       <h2 className="text-2xl font-extrabold p-3">{listName}</h2>
       <div className="flex flex-col justify-center items-center">
         <ul className="flex justify-center items-center flex-wrap gap-3 w-screen">
-          {list?.map((country) => (
+          {list?.map((country: PrintedCountry) => (
             <CountryCard
               key={country.name}
               country={country}

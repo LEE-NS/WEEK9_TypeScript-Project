@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
 import { PrintedCountry } from "./types/country.type";
-import { UpdatedGetCountries } from "./api/countries";
+import { extractedCountries } from "./api/countries";
 
-const App = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
   const [countries, setCountries] = useState<PrintedCountry[]>([]);
 
   const getFixedData = async () => {
-    const fixedData: PrintedCountry[] = await UpdatedGetCountries();
+    const fixedData: PrintedCountry[] | undefined = await extractedCountries();
     if (fixedData) {
       setCountries(fixedData);
+    } else {
+      alert("데이터를 불러오지 못했습니다.");
     }
   };
 

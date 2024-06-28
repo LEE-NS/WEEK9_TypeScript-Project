@@ -1,18 +1,18 @@
 import { PrintedCountry } from "../types/country.type";
 
-interface CountryListProps {
+interface CountryCardProps {
   countries: PrintedCountry[];
   setCountries: React.Dispatch<React.SetStateAction<PrintedCountry[]>>;
   country: PrintedCountry;
 }
 
-const CountryCard = ({
+const CountryCard: React.FC<CountryCardProps> = ({
   country,
   countries,
   setCountries,
-}: CountryListProps): JSX.Element => {
+}: CountryCardProps): JSX.Element => {
   const handleFavorite = (id: PrintedCountry["id"]): void => {
-    const updatedCountries = countries.map((eachCountry) =>
+    const updatedCountries: PrintedCountry[] = countries.map((eachCountry) =>
       id === eachCountry.id
         ? { ...eachCountry, isFav: !eachCountry.isFav }
         : eachCountry

@@ -10,18 +10,22 @@ export const getCountries = async (): Promise<Country[]> => {
   return data as Country[];
 };
 
-export const UpdatedGetCountries = async (): Promise<PrintedCountry[]> => {
-  const data: Country[] = await getCountries();
-  const printedCountries: PrintedCountry[] = data.map(
-    (country: Country): PrintedCountry => {
-      return {
-        id: crypto.randomUUID(),
-        flag: country.flags.png,
-        name: country.name.common,
-        capital: country.capital ? country.capital[0] : "N/A",
-        isFav: false,
-      };
-    }
-  );
-  return printedCountries as PrintedCountry[];
+export const extractedCountries = async () => {
+  try {
+    const data: Country[] = await getCountries();
+    const printedCountries: PrintedCountry[] = data.map(
+      (country: Country): PrintedCountry => {
+        return {
+          id: crypto.randomUUID(),
+          flag: country.flags.svg,
+          name: country.name.common,
+          capital: country.capital ? country.capital[0] : "N/A",
+          isFav: false,
+        };
+      }
+    );
+    return printedCountries as PrintedCountry[];
+  } catch (error) {
+    console.log(error);
+  }
 };
